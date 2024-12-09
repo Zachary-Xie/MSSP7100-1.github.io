@@ -11,17 +11,21 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  z-index: 1000;
+  z-index: 99999;
   transform: translateY(-50%);
+  animation: slideIn 0.5s ease-out forwards;
 }
 
 .comment-icon:hover {
   background: #3a6fa3;
+  transform: translateY(-50%) scale(1.1);
+  transition: all 0.3s ease;
 }
 
 .comment-icon svg {
   width: 30px;
   height: 30px;
+  display: block;
 }
 
 .comment-panel {
@@ -33,7 +37,7 @@
   background: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.1);
   transition: right 0.3s ease;
-  z-index: 999;
+  z-index: 99998;
   padding: 20px;
 }
 
@@ -103,4 +107,15 @@
 
 .github-login:hover {
     background: #2c3238;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
 } 

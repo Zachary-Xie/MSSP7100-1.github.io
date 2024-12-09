@@ -38,13 +38,18 @@ class CommentSystem {
             <div class="comment-list"></div>
             <div class="comment-input">
                 <textarea placeholder="Write your comment..."></textarea>
-                <button onclick="commentSystem.addComment()">Submit</button>
+                <button id="submitComment">Submit</button>
                 <a href="https://github.com/login/oauth/authorize?client_id=${YOUR_CLIENT_ID}&redirect_uri=${encodeURIComponent('http://localhost:3000/oauth/callback')}&scope=public_repo" 
                    class="github-login" id="github-login">
                    Login with GitHub to comment
                 </a>
             </div>
         `;
+        
+        // 使用事件监听器替代内联onclick
+        const submitButton = panel.querySelector('#submitComment');
+        submitButton.addEventListener('click', () => this.addComment());
+        
         document.body.appendChild(panel);
         this.panel = panel;
     }
@@ -161,4 +166,7 @@ class CommentSystem {
     }
 }
 
-const commentSystem = new CommentSystem(); 
+// 等待DOM加载完成后初始化
+document.addEventListener('DOMContentLoaded', () => {
+    window.commentSystem = new CommentSystem();
+}); 
