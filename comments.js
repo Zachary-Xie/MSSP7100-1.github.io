@@ -21,7 +21,11 @@ class CommentSystem {
     setupCommentIcon() {
         const icon = document.createElement('div');
         icon.className = 'comment-icon';
-        icon.innerHTML = '<img src="images/comment-icon.png" alt="Comment">';
+        icon.innerHTML = `
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path>
+            </svg>
+        `;
         icon.onclick = () => this.togglePanel();
         document.body.appendChild(icon);
     }

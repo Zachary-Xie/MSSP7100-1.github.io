@@ -12,9 +12,14 @@
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 1000;
+  transform: translateY(-50%);
 }
 
-.comment-icon img {
+.comment-icon:hover {
+  background: #3a6fa3;
+}
+
+.comment-icon svg {
   width: 30px;
   height: 30px;
 }
