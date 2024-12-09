@@ -1,9 +1,10 @@
 class CommentSystem {
     constructor() {
         // GitHub configuration
-        this.owner = 'YOUR_GITHUB_USERNAME';
-        this.repo = 'YOUR_REPO_NAME';
+        this.owner = 'Zachary-Xie';
+        this.repo = 'MSSP7100-1.github.io';
         this.issuesApiUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/issues`;
+        this.clientId = 'Ov23liB5ACCcG2iwfQkh';
         
         this.setupCommentIcon();
         this.setupCommentPanel();
@@ -26,7 +27,7 @@ class CommentSystem {
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path>
             </svg>
         `;
-        icon.onclick = () => this.togglePanel();
+        icon.addEventListener('click', () => this.togglePanel());
         document.body.appendChild(icon);
     }
 
@@ -39,14 +40,13 @@ class CommentSystem {
             <div class="comment-input">
                 <textarea placeholder="Write your comment..."></textarea>
                 <button id="submitComment">Submit</button>
-                <a href="https://github.com/login/oauth/authorize?client_id=${YOUR_CLIENT_ID}&redirect_uri=${encodeURIComponent('http://localhost:3000/oauth/callback')}&scope=public_repo" 
+                <a href="https://github.com/login/oauth/authorize?client_id=${this.clientId}&redirect_uri=${encodeURIComponent('http://localhost:3000/oauth/callback')}&scope=public_repo" 
                    class="github-login" id="github-login">
                    Login with GitHub to comment
                 </a>
             </div>
         `;
         
-        // 使用事件监听器替代内联onclick
         const submitButton = panel.querySelector('#submitComment');
         submitButton.addEventListener('click', () => this.addComment());
         
